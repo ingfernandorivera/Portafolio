@@ -1,0 +1,21 @@
+.manual-preview{min-width:0;text-align:left}
+.pdf-reader{border:1px solid rgba(193,160,255,.35);background:#100d1d;box-shadow:0 20px 50px #05030e80}
+.pdf-toolbar{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;padding:12px;border-bottom:1px solid var(--line);font-size:12px}
+.pdf-toolbar button,.pdf-toolbar input,.pdf-toolbar select{font:inherit;color:var(--text);background:#211a35;border:1px solid #d5b6f247;border-radius:0;min-height:40px}
+.pdf-toolbar button{width:40px;cursor:pointer;font-size:18px}
+.pdf-toolbar input{width:50px;text-align:center;padding:4px}
+.pdf-toolbar select{max-width:100%;padding:6px}
+.pdf-toolbar button:hover:not(:disabled){background:#382348}
+.pdf-toolbar :disabled{opacity:.45;cursor:default}
+.pdf-toolbar :focus-visible,.pdf-stage:focus-visible,.pdf-transcript summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.pdf-stage{height:560px;overflow:auto;padding:12px;max-width:100%;background:#292631;scrollbar-color:#b99acb #1e192b}
+.pdf-stage img{display:block;max-width:none;height:auto;margin:0 auto;background:white;box-shadow:0 4px 15px #0005}
+.pdf-status{font-size:12px;color:var(--muted);text-align:center;padding:10px 12px;border-top:1px solid var(--line)}
+.pdf-transcript{font-size:12px;padding:0 14px 12px;color:var(--muted)}
+.pdf-transcript summary{cursor:pointer;min-height:32px}
+.pdf-transcript p{line-height:1.8;white-space:pre-wrap;max-height:180px;overflow:auto;margin-top:8px}
+.manual-preview figcaption{line-height:1.7;text-align:center}
+.manual-preview-links{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 22px;margin-top:12px}
+.manual-preview-links a{font-size:11px;letter-spacing:.05em;color:var(--accent);text-decoration:underline;text-underline-offset:4px}
+@media(max-width:900px){.manual-preview{width:100%;max-width:620px;margin-inline:auto}.pdf-stage{height:620px}}
+@media(max-width:500px){.pdf-stage{height:440px}.pdf-toolbar{gap:6px;padding:10px}.pdf-toolbar select{font-size:11px}.case-header,.case-footer{flex-wrap:wrap}.case-panel{padding:30px 22px}}

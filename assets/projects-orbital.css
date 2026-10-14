@@ -1,0 +1,562 @@
+/* ==========================================================================
+   NAVEGADOR ORBITAL — PROYECTOS SELECCIONADOS
+   Estilo arquitectónico y editorial cósmico: esquinas rectas (border-radius: 0),
+   marcos geométricos finos, capturas reales de alta fidelidad y accesos directos.
+   ========================================================================== */
+
+/* --- Contenedor de la sección --- */
+.section.projects {
+  position: relative;
+  overflow: visible;
+}
+
+/* --- Barra de Filtros / Tabs Geométricas --- */
+.orbital-tabs-container {
+  margin: 30px 0 44px !important;
+  position: relative !important;
+  z-index: 4 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.filters.orbital-tabs {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: rgba(14, 11, 26, 0.85) !important;
+  border: 1px solid rgba(193, 160, 255, 0.25) !important;
+  border-radius: 0 !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  box-shadow: 0 10px 30px rgba(5, 3, 14, 0.6) !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Anular pseudo-elementos conflictivos */
+.filters.orbital-tabs button::after,
+.filters.orbital-tabs button::before,
+.filters.orbital-tabs .orbital-tab::after,
+.filters.orbital-tabs .orbital-tab::before {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  transform: none !important;
+  background: none !important;
+  border: none !important;
+}
+
+/* Botón de Pestaña Rectangular */
+.filters.orbital-tabs button.orbital-tab {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  background: transparent !important;
+  color: #bfb7d8 !important;
+  border: none !important;
+  border-right: 1px solid rgba(193, 160, 255, 0.15) !important;
+  border-radius: 0 !important;
+  padding: 12px 22px !important;
+  min-height: unset !important;
+  height: auto !important;
+  font-family: var(--sans) !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.06em !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+  position: relative !important;
+  user-select: none !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+}
+
+.filters.orbital-tabs button.orbital-tab:last-child {
+  border-right: none !important;
+}
+
+.filters.orbital-tabs button.orbital-tab:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Pestaña Activa: bloque geométrico con resplandor cósmico uniforme */
+.filters.orbital-tabs button.orbital-tab.active {
+  background: linear-gradient(135deg, rgba(168, 65, 192, 0.45) 0%, rgba(68, 32, 110, 0.65) 100%) !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 0 14px rgba(216, 180, 254, 0.2) !important;
+}
+
+.filters.orbital-tabs button.orbital-tab .tab-star {
+  color: #d8b4fe !important;
+  font-size: 11px !important;
+}
+
+.filters.orbital-tabs button.orbital-tab .tab-idx {
+  font-size: 10px !important;
+  letter-spacing: 0.12em !important;
+  color: #c9a4ff !important;
+  font-weight: 600 !important;
+}
+
+.filters.orbital-tabs button.orbital-tab .tab-counter {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  padding: 0 5px !important;
+  border-radius: 0 !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  color: #f0e6fc !important;
+  line-height: 1 !important;
+  margin-left: 2px !important;
+}
+
+.filters.orbital-tabs button.orbital-tab.active .tab-counter {
+  background: rgba(216, 180, 254, 0.3) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  color: #ffffff !important;
+}
+
+/* --- Project Grid (Alineado y sin márgenes asimétricos) --- */
+.project-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)) !important;
+  gap: 32px !important;
+  align-items: stretch !important;
+}
+
+.project-card:nth-child(n) {
+  margin-top: 0 !important;
+}
+
+/* --- Tarjeta de Proyecto Arquitectónica (Bordes Rectos) --- */
+.project-card {
+  position: relative !important;
+  background: rgba(16, 13, 30, 0.8) !important;
+  border: 1px solid rgba(193, 160, 255, 0.22) !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: transform 0.35s ease, border-color 0.3s ease, box-shadow 0.35s ease !important;
+  box-shadow: 0 10px 30px rgba(6, 3, 15, 0.5) !important;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(216, 180, 254, 0.7), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 3;
+}
+
+.project-card:hover {
+  transform: translateY(-6px) !important;
+  border-color: rgba(216, 180, 254, 0.55) !important;
+  box-shadow: 0 20px 50px rgba(6, 3, 16, 0.8), 0 0 35px rgba(180, 76, 203, 0.25) !important;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* --- Visual Showcase (Área de imagen / Portada) --- */
+.card-showcase {
+  position: relative;
+  width: 100%;
+  height: 235px;
+  background: #0d0a1c;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(193, 160, 255, 0.15);
+  border-radius: 0 !important;
+  cursor: pointer;
+}
+
+.showcase-media {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.showcase-media.academy {background:#11192c}
+.showcase-media.academy .showcase-img {object-fit:cover;object-position:center;padding:0}
+
+.showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10px;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.project-card:hover .showcase-img {
+  transform: scale(1.03);
+}
+
+.showcase-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 10, 28, 0.1) 0%,
+    rgba(13, 10, 28, 0.35) 60%,
+    rgba(16, 13, 30, 0.95) 100%
+  );
+  pointer-events: none;
+}
+
+/* Badges flotantes en la cabecera */
+.showcase-top-badges {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.badge-order {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #ffffff;
+  background: rgba(14, 11, 27, 0.9);
+  border: 1px solid rgba(216, 180, 254, 0.35);
+  border-radius: 0 !important;
+  padding: 5px 10px;
+  backdrop-filter: blur(8px);
+}
+
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #e5d4ff;
+  background: rgba(180, 76, 203, 0.35);
+  border: 1px solid rgba(216, 180, 254, 0.5);
+  border-radius: 0 !important;
+  padding: 5px 10px;
+  backdrop-filter: blur(8px);
+  text-transform: uppercase;
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 0 !important;
+  background: #a3e635;
+  box-shadow: 0 0 8px #a3e635;
+  display: inline-block;
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+/* --- Cuerpo de la Tarjeta --- */
+.card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-category-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c49be8;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.card-title {
+  margin: 0 0 6px 0;
+  font-family: var(--serif);
+  font-size: 29px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.card-title-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #ffffff;
+  text-align: left;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s ease;
+}
+
+.card-title-button:hover {
+  color: #dfc6ff;
+}
+
+.card-title-button .title-arrow {
+  font-family: var(--sans);
+  font-size: 18px;
+  color: #dca2ec;
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover .card-title-button .title-arrow {
+  transform: translate(2px, -2px);
+}
+
+.card-subtitle {
+  font-size: 13px;
+  color: #d6b8f6;
+  font-weight: 400;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.card-description {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #b3accf;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- Chips de Stack Tecnológico (Bordes Rectos) --- */
+.tech-stack-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 22px;
+}
+
+.tech-chip {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 0 !important;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #d2caf0;
+  transition: all 0.2s ease;
+}
+
+.tech-chip:hover {
+  background: rgba(180, 76, 203, 0.2);
+  border-color: rgba(216, 180, 254, 0.4);
+  color: #ffffff;
+}
+
+/* --- Acciones en Tarjeta (Bordes Rectos) --- */
+.card-actions-wrapper {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Selector múltiple de demos */
+.multi-demos-box {
+  background: rgba(13, 10, 24, 0.7);
+  border: 1px solid rgba(193, 160, 255, 0.18);
+  border-radius: 0 !important;
+  padding: 10px 12px;
+}
+
+.multi-demos-title {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #c9a4ff;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.multi-demos-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.demo-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(180, 76, 203, 0.2);
+  border: 1px solid rgba(216, 180, 254, 0.35);
+  border-radius: 0 !important;
+  color: #ffffff;
+  padding: 7px 12px;
+  font-size: 11.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.demo-pill-btn:hover {
+  background: rgba(180, 76, 203, 0.5);
+  border-color: #d8b4fe;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(180, 76, 203, 0.35);
+}
+
+/* Botón individual de demo (Estilo botón Section 03) */
+.single-demo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(168, 65, 192, 0.4) 0%, rgba(85, 45, 140, 0.6) 100%);
+  border: 1px solid rgba(216, 180, 254, 0.5);
+  border-radius: 0 !important;
+  color: #ffffff;
+  padding: 12px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(180, 76, 203, 0.25);
+}
+
+.single-demo-btn:hover {
+  background: linear-gradient(135deg, rgba(185, 80, 210, 0.55) 0%, rgba(105, 55, 160, 0.75) 100%);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(180, 76, 203, 0.45);
+}
+
+/* Fila inferior de enlaces: Ver caso + Ficha */
+.secondary-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.case-study-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #d4baff;
+  text-decoration: none;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(212, 186, 255, 0.4);
+  transition: all 0.2s ease;
+}
+
+.case-study-link:hover {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+  transform: translateX(2px);
+}
+
+.case-study-link span {
+  font-size: 10px;
+}
+
+.info-dialog-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0 !important;
+  color: #b5aed4;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.info-dialog-btn:hover {
+  color: #ffffff;
+  border-color: rgba(216, 180, 254, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* --- Responsive adjustments --- */
+@media (max-width: 1024px) {
+  .project-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+    gap: 24px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .orbital-tabs-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+    padding-bottom: 6px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .filters.orbital-tabs {
+    width: auto !important;
+    min-width: max-content !important;
+    flex-wrap: nowrap !important;
+    border-radius: 0 !important;
+  }
+  .filters.orbital-tabs button.orbital-tab {
+    flex-shrink: 0 !important;
+    padding: 10px 15px !important;
+    font-size: 12px !important;
+    border-radius: 0 !important;
+  }
+  .project-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+  .card-showcase {
+    height: 210px;
+  }
+}
