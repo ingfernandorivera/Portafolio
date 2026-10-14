@@ -43,7 +43,7 @@ public/
     fitbodygym/      # Ficha y acceso a las tres demos
     sistema-130/     # Ficha: contexto, demo, recursos gráficos y capturas
     academia-policia/ # Ficha de serie formativa y OVA interactiva del módulo 4
-.github/workflows/pages.yml
+tools/publish-pages.ps1 # Actualiza la rama de publicación gh-pages
 README.md
 ASSETS.md            # Procedencia y prompt de la nebulosa
 SISTEMA-130.md       # Procedencia y adaptación de la demo de Sistema 130
