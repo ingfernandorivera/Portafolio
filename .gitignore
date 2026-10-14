@@ -1,0 +1,19 @@
+/*
+!/.gitignore
+!/.vscode/
+!/public/
+!/tools/
+!/README.md
+!/ASSETS.md
+!/FITBODYGYM.md
+!/SISTEMA-130.md
+!/ABRIR PORTAFOLIO.cmd
+!/COMPILAR APP FITBODYGYM.cmd
+
+# Los originales, fuentes de las demos y archivos de trabajo nunca se publican.
+**/.env
+**/.env.*
+**/node_modules/
+**/.dart_tool/
+**/*.zip
+**/*.log
