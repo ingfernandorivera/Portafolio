@@ -167,51 +167,5 @@ window.PORTFOLIO_PROJECTS = [
     caseStudy: 'projects/academia-policia/index.html',
     demo: 'demos/ovas/academia-policia-modulo-4/index.html',
     media: []
-  },
-  {
-    id: 'ova-ejemplo',
-    title: 'Aprender Explorando',
-    category: 'learning',
-    categoryIndex: '02',
-    label: '02 / OVAs y aprendizaje interactivo',
-    subtitle: 'Objeto Virtual de Aprendizaje (OVA) interactivo',
-    visual: 'learning',
-    number: '08',
-    status: 'OVA DE EJEMPLO',
-    cover: null,
-    coverAlt: 'OVA Interactiva de ejemplo',
-    description: 'Experiencia interactiva de microlearning diseñada para demostrar la integración de recursos educativos SCORM/HTML5 independientes con retroalimentación en tiempo real.',
-    tags: ['HTML5 / SCORM', 'Microlearning', 'Interactividad', 'Evaluación Lúdica'],
-    details: [
-      'Actividad interactiva breve con retroalimentación formativa inmediata.',
-      'Estructura modular y navegación accesible adaptable a cualquier LMS.',
-      'Diseño visual responsivo adaptado al ecosistema digital.'
-    ],
-    caseStudy: null,
-    demo: 'demos/ova-ejemplo/index.html',
-    media: []
-  },
-  {
-    id: 'diseno-digital',
-    title: 'Diseño en Conexión',
-    category: 'design',
-    categoryIndex: '03',
-    label: '03 / Diseño digital',
-    subtitle: 'Sistemas de diseño, identidad visual y prototipado UI/UX',
-    visual: 'design',
-    number: '09',
-    status: 'ESPACIO RESERVADO',
-    cover: null,
-    coverAlt: 'Diseño en Conexión UI/UX',
-    description: 'Espacio dedicado a documentar procesos integrales de diseño: investigación de usuarios, wireframes, diseño de sistemas en Figma, prototipado interactivo y validación visual.',
-    tags: ['Figma', 'UI/UX', 'Design Systems', 'Prototipado', 'Branding'],
-    details: [
-      'Documentación de metodologías de diseño centrado en el usuario.',
-      'Creación de librerías de componentes y tokens de diseño reutilizables.',
-      'Próximamente se integrarán casos de estudio visuales.'
-    ],
-    caseStudy: null,
-    demo: null,
-    media: []
   }
 ];

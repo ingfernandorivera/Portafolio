@@ -34,7 +34,6 @@ public/
     media/           # Capturas y videos autorizados
       nebula-editorial.webp  # Fondo original optimizado (~114 KB)
   demos/
-    ova-ejemplo/      # index.html + activity.js
     ovas/academia-policia-modulo-4/ # Exportación web Rise, versión pública del módulo 4
     apps/
       sistema-130/   # Demo Flutter con integraciones simuladas, carga bajo demanda
@@ -83,7 +82,7 @@ media: [
 ]
 ```
 
-Las rutas de medios se interpretan desde `public/index.html`. Comprime capturas a WebP y videos a MP4; añade subtítulos si tienen voz o información sonora. El cargador de medios es opcional y no reproduce videos automáticamente. Duplica `demos/ova-ejemplo/` para cada OVA y conserva rutas relativas. Las apps con servidor, bases de datos o secretos necesitan una adaptación a demo estática: GitHub Pages solo sirve archivos.
+Las rutas de medios se interpretan desde `public/index.html`. Comprime capturas a WebP y videos a MP4; añade subtítulos si tienen voz o información sonora. El cargador de medios es opcional y no reproduce videos automáticamente. Coloca las exportaciones web de cada OVA en `demos/ovas/` y conserva sus rutas relativas. Las apps con servidor, bases de datos o secretos necesitan una adaptación a demo estática: GitHub Pages solo sirve archivos.
 
 ## Completar antes de presentar
 
