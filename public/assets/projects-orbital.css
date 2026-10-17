@@ -308,6 +308,35 @@
   display: block;
 }
 
+.card-project-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-bottom: 12px;
+}
+
+.card-project-meta .card-category-tag { margin-bottom: 0; }
+.project-lifecycle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 8px;
+  border: 1px solid var(--state-border);
+  color: var(--state-color);
+  background: var(--state-bg);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.project-lifecycle i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.project-lifecycle--in-use { --state-color: #b9eacb; --state-border: #75c99555; --state-bg: #214c3438; }
+.project-lifecycle--in-development { --state-color: #f1d49c; --state-border: #e2b96755; --state-bg: #60451a38; }
+.project-lifecycle--prototype { --state-color: #d9c5f4; --state-border: #baa0dd55; --state-bg: #46305f38; }
+.dialog-project-state { margin: 4px 0 18px; }
+
 .card-title {
   margin: 0 0 6px 0;
   font-family: var(--serif);
@@ -363,6 +392,12 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.project-card-app .card-description {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
 }
 
 /* --- Chips de Stack Tecnológico (Bordes Rectos) --- */

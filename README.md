@@ -70,7 +70,7 @@ Para actualizar el sitio, edita los archivos en `public/`, confirma tus cambios 
 
 ## Añadir proyectos, capturas y videos
 
-Edita `public/assets/projects.js`. Cada proyecto tiene `id`, `title`, `category` (`systems`, `learning`, `design`), `label`, `subtitle`, `visual` (`fitness`, `learning`, `design`, `honduras`, `isdemu`), `number`, `status`, `description`, `details`, `demo` y `media`. Opcionalmente, `cover` y `coverAlt` definen una portada con imagen y `caseStudy` enlaza una ficha propia.
+Edita `public/assets/projects.js`. Cada proyecto tiene `id`, `title`, `category` (`systems`, `learning`, `design`), `label`, `subtitle`, `visual` (`fitness`, `learning`, `design`, `honduras`, `isdemu`), `number`, `showcaseLabel`, `lifecycle`, `description`, `details`, `demo` y `media`. `lifecycle` acepta `in-use`, `in-development` o `prototype`; el estado del proyecto es independiente de la disponibilidad de su demo. Opcionalmente, `cover` y `coverAlt` definen una portada con imagen y `caseStudy` enlaza una ficha propia.
 
 Ejemplo de campos opcionales:
 
@@ -100,6 +100,18 @@ El fondo combina una imagen WebP original (~114 KB) con capas CSS y no usa video
 
 El contraste y el comportamiento se deben volver a revisar al sustituir textos y medios. El proyecto no incorpora analítica ni almacenamiento de respuestas.
 
-## Actualizar el CV
+## Optimización y seguridad de la publicación
+
+La portada muestra el contenido antes de iniciar la descarga de Three.js y la nave. `assets/ship-loader.js` espera a la carga de la página y a un momento libre del navegador. En modo de ahorro de datos o conexión 2G, la nave solo se descarga al solicitar el vuelo; con movimiento reducido no se inicia. La animación se detiene al ocultar la pestaña o salir de la sección. El nombre permanece visible durante la carga automática; la revelación de letras se conserva al repetir el vuelo.
+
+El modelo usa Meshopt y un decodificador local con licencia MIT: pasó de 6.387.168 a aproximadamente 2.080.000 bytes, conservando geometría y texturas con cuantización de alta precisión. Se convirtieron 40 imágenes enlazadas a WebP: 10.440.426 → 1.465.142 bytes en conjunto. Los originales existentes se conservan para enlaces anteriores. Estos tamaños son pesos de archivos, no una medición de tiempo de carga en todas las conexiones.
+
+Las hojas de estilo y las fuentes se descubren directamente desde HTML, sin cadenas de `@import`. Las imágenes fuera de pantalla y las demos se cargan bajo demanda. Los recursos gráficos tienen dimensiones declaradas cuando corresponde.
+
+La portada y las siete fichas incluyen Content Security Policy: scripts locales, hash para el import map, bloqueo de manejadores de eventos inline, objetos y formularios, y conexiones locales. Solo se habilita la compilación WebAssembly necesaria para Meshopt; `blob:` permite leer las texturas locales del GLB. Los estilos inline siguen permitidos porque la interfaz y la animación los utilizan. Las demos mantienen sus políticas y adaptadores locales independientes. GitHub Pages sirve el sitio con HTTPS obligatorio; sus cabeceras HTTP y caché dependen del alojamiento.
+
+Antes de publicar, ejecuta `node tools/check-site.cjs`. El publicador ejecuta automáticamente esta comprobación de enlaces locales, estados, CSP y patrones de credenciales/archivos privados. La revisión de patrones ayuda a prevenir errores, pero no sustituye una auditoría exhaustiva ni garantiza seguridad absoluta.
+
+## Actualizar el CV público
 
 Sustituye `public/assets/docs/kevin-rivera-cv-octubre-2026.pdf` por la nueva versión pública y actualiza las etiquetas de versión, peso y formación en `public/index.html`. Los cuatro enlaces de descarga funcionan con rutas relativas en GitHub Pages. Revisa el contenido y los datos de contacto antes de una publicación futura.

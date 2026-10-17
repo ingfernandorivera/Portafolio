@@ -17,3 +17,10 @@
 **/.dart_tool/
 **/*.zip
 **/*.log
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/*.blend
+**/*.blend1
+**/*.sqlite

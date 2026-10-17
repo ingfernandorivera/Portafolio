@@ -1,6 +1,9 @@
 $ErrorActionPreference = 'Stop'
 Set-Location -LiteralPath (Split-Path -Parent $PSScriptRoot)
 
+& node tools/check-site.cjs
+if ($LASTEXITCODE -ne 0) { throw 'La revisión del sitio falló. Corrige los problemas antes de publicar.' }
+
 function Invoke-PortfolioGit {
     param([string[]]$GitArgs)
     $result = & git @GitArgs
