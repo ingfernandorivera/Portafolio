@@ -13,7 +13,7 @@
     if (button) button.disabled = true;
     try {
       if (!loading) {
-        loading = import('./ship-intro.js').then(async module => {
+        loading = import('./ship-intro.js?v=2').then(async module => {
           const initialized = await module.init({ autoplay: !manual });
           if (!initialized) {
             loading = null;
@@ -40,11 +40,14 @@
   const schedule = () => {
     if (reduced.matches || constrained || document.hidden || flight) return;
     const run = () => loadFlight();
-    if ('requestIdleCallback' in window) requestIdleCallback(run, { timeout: 2500 });
-    else setTimeout(run, 500);
+    // Give the page two paint frames, then start preparing the first flight.
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if ('requestIdleCallback' in window) requestIdleCallback(run, { timeout: 800 });
+      else setTimeout(run, 0);
+    }));
   };
-  if (document.readyState === 'complete') schedule();
-  else window.addEventListener('load', schedule, { once: true });
+  if (document.readyState !== 'loading') schedule();
+  else document.addEventListener('DOMContentLoaded', schedule, { once: true });
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden) schedule();
   });

@@ -28,6 +28,8 @@ let flightMode = 'hero'; // 'hero' | 'capabilities' | 'trayectoria'
 let capPlayedInView = false;
 let careerInView = false;
 let careerLoopTimer = 0;
+let initialHeroPlayed = false;
+let autoPlayEnabled = true;
 let trails = [], mist = [], arcs = [], orbs = [], gravRings = [];
 let coreGlow, innerCoreGlow, engineLight, gravShellMat, bowWaveMat;
 let charItems = [];
@@ -798,12 +800,13 @@ function tick(now) {
   }
 }
 
-export function start(revealText = false) {
+export function start(revealText = true) {
   if (!ready || reduced.matches || document.hidden) {
     finish();
     return;
   }
-  if (hero.getBoundingClientRect().bottom < 120 || (location.hash && location.hash !== '#inicio')) {
+  const heroRect = hero.getBoundingClientRect();
+  if (heroRect.bottom < 120 || heroRect.top > innerHeight * 0.75) {
     finish();
     return;
   }
@@ -811,6 +814,7 @@ export function start(revealText = false) {
   clearTimeout(watchdog);
   clearTimeout(careerLoopTimer);
   flightMode = 'hero';
+  initialHeroPlayed = true;
   layout = measure();
   if (revealText) resetCharactersHidden();
   else revealAllCharactersInstantly();
@@ -830,6 +834,18 @@ export function start(revealText = false) {
     raf = requestAnimationFrame(tick);
   });
   watchdog = setTimeout(finish, layout.duration + 2000);
+}
+
+function playInitialHero() {
+  if (!autoPlayEnabled || !ready || initialHeroPlayed || running || reduced.matches || document.hidden) return;
+  const rect = hero.getBoundingClientRect();
+  if (rect.top < innerHeight * 0.6 && rect.bottom > innerHeight * 0.45) start(true);
+}
+
+function setupHeroObserver() {
+  if (!('IntersectionObserver' in window)) return;
+  const observer = new IntersectionObserver(playInitialHero, { threshold: [0, 0.2, 0.5] });
+  observer.observe(hero);
 }
 
 function startCapabilitiesFlyby() {
@@ -934,6 +950,7 @@ function setupCareerObserver() {
 }
 
 export async function init({ autoplay = true } = {}) {
+  autoPlayEnabled = autoplay;
   if (!hero || !canvas || reduced.matches) {
     finish();
     return false;
@@ -1013,10 +1030,11 @@ export async function init({ autoplay = true } = {}) {
 
     ready = true;
     root.classList.add('ship-intro-ready');
+    setupHeroObserver();
     setupCapabilitiesObserver();
     setupCareerObserver();
 
-    if (!finished && autoplay) {
+    if (autoplay) {
       if (careerSection) {
         const carRect = careerSection.getBoundingClientRect();
         if (carRect.top < innerHeight * 0.75 && carRect.bottom > innerHeight * 0.25 && hero.getBoundingClientRect().bottom < 120) {
@@ -1033,7 +1051,7 @@ export async function init({ autoplay = true } = {}) {
           return true;
         }
       }
-      start();
+      playInitialHero();
     }
 
     // If web fonts finish settling a moment later, refresh character positions seamlessly
@@ -1059,10 +1077,12 @@ reduced.addEventListener('change', () => {
 });
 document.addEventListener('visibilitychange', () => {
   if (document.hidden && running) finish();
+  else if (!document.hidden) playInitialHero();
 });
 window.addEventListener('pagehide', finish);
 window.addEventListener('resize', () => {
-  if (running) finish();
+  // Mobile browser bars change the height while opening a page. Keep the flight.
+  if (running && Math.abs(innerWidth - layout.width) > 2) finish();
 }, { passive: true });
 window.addEventListener('scroll', () => {
   if (running && flightMode === 'hero' && hero.getBoundingClientRect().bottom < innerHeight * 0.25) {
