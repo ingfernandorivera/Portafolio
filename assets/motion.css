@@ -1,0 +1,38 @@
+/* Short, continuous entrances without staggered delays or layout changes. */
+.motion-item {
+  transition: opacity 650ms ease-out, translate 750ms cubic-bezier(.22,.61,.36,1);
+}
+.motion-pending {
+  opacity: 0;
+  translate: 0 12px;
+}
+.project-card.motion-item {
+  transition: opacity 650ms ease-out, translate 750ms cubic-bezier(.22,.61,.36,1),
+    transform 350ms ease, border-color 300ms ease, box-shadow 350ms ease !important;
+}
+.ghost-word.motion-item {
+  transition-duration: 850ms, 1100ms;
+}
+.ghost-word.motion-pending {
+  translate: calc(-1 * clamp(20px, 5vw, 72px)) 0;
+}
+.ghost-word.ghost-right.motion-pending {
+  translate: clamp(20px, 5vw, 72px) 0;
+}
+.motion-item:focus-within, .project-card.motion-item:focus-within {
+  opacity: 1;
+  translate: none;
+  transition: none !important;
+}
+@media (max-width:700px) {
+  .motion-pending { translate: 0 8px; }
+  .ghost-word.motion-pending { translate: -18px 0; }
+  .ghost-word.ghost-right.motion-pending { translate: 18px 0; }
+}
+@media (prefers-reduced-motion:reduce), print {
+  .motion-item, .project-card.motion-item {
+    opacity: 1 !important;
+    translate: none !important;
+    transition: none !important;
+  }
+}

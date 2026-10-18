@@ -1,6 +1,13 @@
 const projects = window.PORTFOLIO_PROJECTS;
 const grid = document.querySelector('#project-grid');
 const dialog = document.querySelector('#project-dialog');
+const lifecycleLabels = window.PORTFOLIO_LIFECYCLES;
+
+function projectStateMarkup(project) {
+  const state = lifecycleLabels[project.lifecycle];
+  if (!state) return '';
+  return `<span class="project-lifecycle project-lifecycle--${project.lifecycle}"><i aria-hidden="true"></i><span class="sr-only">Estado del proyecto: </span>${state.label}</span>`;
+}
 
 const labels = {
   fitness: '<div class="fitness-mark" aria-hidden="true"><div class="mini-app"><div class="mini-app-header">FitBodyGym <span>ECOSISTEMA</span></div><div class="mini-app-title">Todo está conectado.</div><div class="mini-stats"><span>Miembros de muestra<b>128</b></span><span>Rutinas de ejemplo<b>24</b></span></div><div class="mini-chart"><i style="--h:35%"></i><i style="--h:58%"></i><i style="--h:46%"></i><i style="--h:75%"></i><i style="--h:62%"></i><i style="--h:88%"></i></div></div></div>',
@@ -31,6 +38,14 @@ function openProjectDialog(projectId) {
   document.querySelector('#dialog-description').textContent = p.description;
   const details = document.querySelector('#dialog-details');
   details.replaceChildren();
+
+  const projectState = projectStateMarkup(p);
+  if (projectState) {
+    const stateRow = document.createElement('div');
+    stateRow.className = 'dialog-project-state';
+    stateRow.innerHTML = projectState;
+    details.append(stateRow);
+  }
 
   // Tags en modal
   if (p.tags && p.tags.length) {
@@ -78,7 +93,7 @@ function openProjectDialog(projectId) {
     link.className = 'button primary';
     link.target = '_blank';
     link.rel = 'noopener';
-    link.textContent = 'Abrir demo';
+    link.textContent = p.demoLabel || 'Abrir demo';
     actions.append(link);
   }
   if (p.demos) {
@@ -115,11 +130,19 @@ function render(filter = 'all') {
   selected.forEach(p => {
     const article = document.createElement('article');
     article.className = 'project-card';
+    if (p.demoPrimary) article.classList.add('project-card-app');
     article.setAttribute('data-category', p.category);
+    article.id = `proyecto-${p.id}`;
 
-    // La ficha de cada proyecto es la acción principal; las demos quedan disponibles debajo.
+    // Cada aplicación de FitBodyGym tiene acceso directo a su propia demo.
     let actionsHtml = '';
-    if (p.caseStudy) {
+    if (p.demoPrimary && p.demo) {
+      actionsHtml = `
+        <a href="${p.demo}" class="single-demo-btn" target="_blank" rel="noopener">
+          <span>${p.demoLabel || 'Explorar demo'}</span> <i>↗</i>
+        </a>
+      `;
+    } else if (p.caseStudy) {
       actionsHtml = `
         <a href="${p.caseStudy}" class="single-demo-btn">
           <span>Explorar caso y recursos</span> <i>↗</i>
@@ -142,7 +165,7 @@ function render(filter = 'all') {
           </div>
         </div>
       `;
-    } else if (p.demo && p.caseStudy) {
+    } else if (p.demo && p.caseStudy && !p.demoPrimary) {
       actionsHtml += `
         <div class="multi-demos-box">
           <span class="multi-demos-title">✦ PROBAR DEMO INTERACTIVA:</span>
@@ -156,8 +179,8 @@ function render(filter = 'all') {
     // Fila secundaria: Caso de estudio + Ficha técnica
     const secondaryRow = `
       <div class="secondary-actions-row">
-        ${p.caseStudy 
-          ? `<a href="${p.caseStudy}" class="case-study-link">Ver caso de estudio <span>✦</span></a>` 
+        ${p.caseStudy
+          ? `<a href="${p.caseStudy}" class="case-study-link">Ver caso de estudio <span>✦</span></a>`
           : '<span style="font-size:11px;color:#8f88ab;">Caso en preparación</span>'}
         <button class="info-dialog-btn" data-project="${p.id}" aria-label="Abrir ficha técnica de ${p.title}">
           Ficha técnica <span>ℹ</span>
@@ -169,8 +192,8 @@ function render(filter = 'all') {
     const tagsHtml = (p.tags || []).map(t => `<span class="tech-chip">${t}</span>`).join('');
 
     // Portada / Showcase
-    const mediaHtml = p.cover 
-      ? `<img src="${p.cover}" alt="${p.coverAlt || p.title}" loading="lazy" class="showcase-img">` 
+    const mediaHtml = p.cover
+      ? `<img src="${p.cover}" alt="${p.coverAlt || p.title}" loading="lazy" decoding="async" class="showcase-img">`
       : (labels[p.visual] || '');
 
     article.innerHTML = `
@@ -181,11 +204,11 @@ function render(filter = 'all') {
         </div>
         <div class="showcase-top-badges">
           <span class="badge-order">${p.number}</span>
-          <span class="badge-status"><i class="pulse-dot"></i> ${p.status || 'PROYECTO'}</span>
+          <span class="badge-status">${p.showcaseLabel || 'PROYECTO'}</span>
         </div>
       </div>
       <div class="card-body">
-        <span class="card-category-tag">${p.label}</span>
+        <div class="card-project-meta"><span class="card-category-tag">${p.label}</span>${projectStateMarkup(p)}</div>
         <h3 class="card-title">
           <button class="card-title-button" data-project="${p.id}" aria-label="Abrir detalles de ${p.title}">
             <span>${p.title}</span>

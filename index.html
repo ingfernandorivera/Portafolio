@@ -1,35 +1,105 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-0kNeMIvOsUBAOc0OWHIU9qHolDNxz5cXOJecV1tB3vY='; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' blob:; media-src 'self' blob:; worker-src 'self' blob:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Portafolio de Kevin Fernando Rivera Ramírez. Diseño, desarrollo y experiencias de aprendizaje digital.">
   <meta name="theme-color" content="#18152e"><title>Kevin Rivera — Diseño & universos digitales</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/theme.css"><link rel="stylesheet" href="assets/career.css"><link rel="stylesheet" href="assets/nebula.css"><link rel="stylesheet" href="assets/projects-orbital.css">
-  <link rel="preload" as="image" href="assets/media/nebula-editorial.webp">
-  <script src="assets/projects.js" defer></script><script src="assets/app.js" defer></script><script src="assets/nebula.js" defer></script>
+  <script type="importmap">{"imports":{"three":"./assets/vendor/three/build/three.module.min.js"}}</script>
+  <link rel="stylesheet" href="assets/fonts/fonts.css"><link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/motion.css"><link rel="stylesheet" href="assets/theme.css"><link rel="stylesheet" href="assets/career.css"><link rel="stylesheet" href="assets/nebula.css"><link rel="stylesheet" href="assets/projects-orbital.css"><link rel="stylesheet" href="assets/ship-intro.css">
+  <link rel="preload" as="image" href="assets/media/nebula-editorial.webp" fetchpriority="high">
+  <link rel="preload" href="assets/fonts/cormorant-garamond-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="assets/ship-loader.js" defer></script><script src="assets/projects.js" defer></script><script src="assets/app.js" defer></script><script src="assets/nebula.js" defer></script><script src="assets/motion.js" defer></script>
 </head>
 <body>
   <div class="cosmic-background" aria-hidden="true"><div class="nebula-depth nebula-depth-far"><div class="nebula-cloud nebula-cloud-violet"></div></div><div class="nebula-depth nebula-depth-near"><div class="nebula-cloud nebula-cloud-blue"></div></div><div class="nebula-depth nebula-depth-wisp"><div class="nebula-cloud nebula-cloud-wisp"></div></div><div class="cosmic-stars"></div><div class="cosmic-shade"></div></div>
+  <div class="ship-intro-layer" aria-hidden="true" hidden>
+    <canvas class="ship-intro-canvas"></canvas>
+  </div>
   <a class="skip" href="#main">Saltar al contenido</a>
-  <header class="header"><a class="brand" href="#inicio" aria-label="Kevin Rivera, inicio">K<span>R</span><i aria-hidden="true">✦</i></a><span class="header-caption">DISEÑO & UNIVERSOS DIGITALES</span><button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menú <span aria-hidden="true">☰</span></button><nav id="navigation" aria-label="Principal"><a href="#sobre-mi">Sobre mí</a><a href="#proyectos">Proyectos</a><a href="#enfoque">Enfoque</a><a href="#trayectoria">Trayectoria</a><a class="nav-contact" href="#contacto">Conectemos</a></nav></header>
-  <nav class="section-rail" aria-label="Recorrido del portafolio"><a href="#inicio" aria-label="Inicio" aria-current="location"><span>01</span><i></i></a><a href="#sobre-mi" aria-label="Sobre mí"><span>02</span><i></i></a><a href="#capacidades" aria-label="Capacidades"><span>03</span><i></i></a><a href="#proyectos" aria-label="Proyectos"><span>04</span><i></i></a><a href="#enfoque" aria-label="Enfoque"><span>05</span><i></i></a><a href="#fitbodygym" aria-label="FitBodyGym"><span>06</span><i></i></a><a href="#trayectoria" aria-label="Trayectoria"><span>07</span><i></i></a><a href="#contacto" aria-label="Contacto"><span>08</span><i></i></a></nav>
+  <header class="header"><a class="brand" href="#inicio" aria-label="Kevin Rivera, inicio">K<span>R</span><i aria-hidden="true">✦</i></a><span class="header-caption">DISEÑO & UNIVERSOS DIGITALES</span><button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menú <span aria-hidden="true">☰</span></button><nav id="navigation" aria-label="Principal"><a href="#sobre-mi">Sobre mí</a><a href="#proyectos">Proyectos</a><a href="#trayectoria">Trayectoria</a><a class="nav-contact" href="#contacto">Conectemos</a></nav></header>
+  <nav class="section-rail" aria-label="Recorrido del portafolio"><a href="#inicio" aria-label="Inicio" aria-current="location"><span>01</span><i></i></a><a href="#sobre-mi" aria-label="Sobre mí"><span>02</span><i></i></a><a href="#capacidades" aria-label="Capacidades"><span>03</span><i></i></a><a href="#proyectos" aria-label="Proyectos"><span>04</span><i></i></a><a href="#fitbodygym" aria-label="FitBodyGym"><span>05</span><i></i></a><a href="#trayectoria" aria-label="Trayectoria"><span>06</span><i></i></a><a href="#contacto" aria-label="Contacto"><span>07</span><i></i></a></nav>
   <main id="main">
     <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="hero-topline"><span>PORTAFOLIO PERSONAL</span><span>CREATIVIDAD / TECNOLOGÍA</span></div>
-      <div class="hero-composition"><div class="hero-aside"><span class="fine-line"></span><p>Conectar ideas.<br>Diseñar experiencias.<br>Crear posibilidades.</p><span class="micro">UNA MIRADA MULTIDISCIPLINARIA</span><a class="button whatsapp-button" href="https://wa.me/50377362990" target="_blank" rel="noopener noreferrer" aria-label="Abrir chat de WhatsApp con Fernando Rivera al +503 7736-2990"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.52 3.48A11.9 11.9 0 0 0 12.05 0C5.46 0 .1 5.35.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.25-1.64a11.93 11.93 0 0 0 5.8 1.48h.01c6.59 0 11.94-5.35 11.94-11.94a11.86 11.86 0 0 0-3.48-8.42ZM12.06 21.82a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.71.97.99-3.62-.24-.37a9.88 9.88 0 0 1-1.51-5.27c0-5.47 4.45-9.92 9.92-9.92a9.85 9.85 0 0 1 7.02 2.91 9.85 9.85 0 0 1 2.9 7.02c0 5.47-4.45 9.87-9.97 9.87Zm5.44-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.11.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/></svg><span>WHATSAPP</span></a></div><div class="hero-title-wrap"><p class="eyebrow">KEVIN FERNANDO RIVERA RAMÍREZ</p><h1 id="hero-title"><span class="given-name">FERNANDO</span><span class="surname">RIVERA<span class="title-star" aria-hidden="true">✦</span></span></h1><p class="hero-tagline">Ideas que se vuelven <em>universos digitales.</em></p></div><div class="hero-description"><p>Desarrollo, diseño UX/UI y transformación digital. De las necesidades de un proyecto a una experiencia centrada en las personas.</p><a class="button primary" href="#proyectos">EXPLORAR PROYECTOS</a><a class="button cv-hero-button" href="assets/docs/kevin-rivera-cv-octubre-2026.pdf" download="CV-Kevin-Rivera-Octubre-2026.pdf" aria-label="Descargar mi CV en PDF"><span class="cv-hero-label">DESCARGAR MI CV<small>PDF · OCT. 2026</small></span><span class="cv-hero-icon" aria-hidden="true">↓</span></a></div></div>
+      <div class="hero-composition"><div class="hero-aside"><span class="fine-line"></span><p>Conectar ideas.<br>Diseñar experiencias.<br>Crear posibilidades.</p><span class="micro">UNA MIRADA MULTIDISCIPLINARIA</span><a class="button whatsapp-button" href="https://wa.me/50377362990" target="_blank" rel="noopener noreferrer" aria-label="Abrir chat de WhatsApp con Fernando Rivera al +503 7736-2990"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.52 3.48A11.9 11.9 0 0 0 12.05 0C5.46 0 .1 5.35.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.25-1.64a11.93 11.93 0 0 0 5.8 1.48h.01c6.59 0 11.94-5.35 11.94-11.94a11.86 11.86 0 0 0-3.48-8.42ZM12.06 21.82a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.71.97.99-3.62-.24-.37a9.88 9.88 0 0 1-1.51-5.27c0-5.47 4.45-9.92 9.92-9.92a9.85 9.85 0 0 1 7.02 2.91 9.85 9.85 0 0 1 2.9 7.02c0 5.47-4.45 9.87-9.97 9.87Zm5.44-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.11.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/></svg><span>WHATSAPP</span></a></div><div class="hero-title-wrap"><p class="eyebrow" data-ship-reveal>KEVIN FERNANDO RIVERA RAMÍREZ</p><h1 id="hero-title" data-ship-reveal><span class="given-name">FERNANDO</span><span class="surname">RIVERA<span class="title-star" aria-hidden="true">✦</span></span></h1><p class="hero-tagline" data-ship-reveal>Ideas que se vuelven <em>universos digitales.</em></p></div><div class="hero-description"><p>Desarrollo, diseño UX/UI y transformación digital. De las necesidades de un proyecto a una experiencia centrada en las personas.</p><a class="button primary" href="#proyectos">EXPLORAR PROYECTOS</a><a class="button cv-hero-button" href="assets/docs/kevin-rivera-cv-octubre-2026.pdf" download="CV-Kevin-Rivera-Octubre-2026.pdf" aria-label="Descargar mi CV en PDF"><span class="cv-hero-label">DESCARGAR MI CV<small>PDF · OCT. 2026</small></span><span class="cv-hero-icon" aria-hidden="true">↓</span></a></div></div>
+      <button class="ship-replay" type="button" aria-label="Repetir la animación de la nave"><span aria-hidden="true">↻</span> REPETIR VUELO</button>
       <span class="vertical-note" aria-hidden="true">ENTRE LO CREATIVO Y LO POSIBLE</span>
       <div class="hero-bottom"><span>DISEÑO · DESARROLLO · TRANSFORMACIÓN DIGITAL</span><a class="scroll-cue" href="#sobre-mi"><span class="mouse" aria-hidden="true"></span>DESLIZA PARA EXPLORAR</a><span class="edition">PORTAFOLIO / 2026</span></div>
     </section>
-    <section class="section about" id="sobre-mi" aria-labelledby="about-title"><span class="ghost-word ghost-right" aria-hidden="true">ESENCIA</span><figure class="about-portrait"><img src="assets/media/fernando-rivera-retrato.jpeg" alt="Retrato de Fernando Rivera" loading="lazy" decoding="async"><figcaption>FERNANDO RIVERA <span>DISEÑO / TECNOLOGÍA / APRENDIZAJE</span></figcaption></figure><div class="about-copy"><p class="eyebrow"><span>01</span> / SOBRE MÍ</p><h2 id="about-title">Creatividad con<br><em>visión de sistema.</em></h2><p class="large">Soy Kevin Fernando Rivera Ramírez, ingeniero en Diseño y Desarrollo de Videojuegos.</p><p>Combino análisis de necesidades, diseño UX/UI, desarrollo de plataformas y automatización para convertir necesidades institucionales y de negocio en soluciones digitales.</p><p>He participado en proyectos para instituciones públicas, cooperación internacional y sector privado, conectando visión estratégica, creatividad y ejecución técnica.</p><div class="profile-actions"><a class="button primary" href="assets/docs/kevin-rivera-cv-octubre-2026.pdf" download="CV-Kevin-Rivera-Octubre-2026.pdf">DESCARGAR CV</a><a class="text-link" href="#trayectoria">CONOCER MI TRAYECTORIA</a></div></div></section>
+    <section class="section about" id="sobre-mi" aria-labelledby="about-title"><span class="ghost-word ghost-right" aria-hidden="true">ESENCIA</span><figure class="about-portrait"><img src="assets/media/fernando-rivera-retrato.webp" alt="Retrato de Fernando Rivera" loading="lazy" decoding="async" width="1080" height="1172"><figcaption>FERNANDO RIVERA <span>DISEÑO / TECNOLOGÍA / APRENDIZAJE</span></figcaption></figure><div class="about-copy"><p class="eyebrow"><span>01</span> / SOBRE MÍ</p><h2 id="about-title">Creatividad con<br><em>visión de sistema.</em></h2><p class="large">Soy Kevin Fernando Rivera Ramírez, ingeniero en Diseño y Desarrollo de Videojuegos.</p><p>Combino análisis de necesidades, diseño UX/UI, desarrollo de plataformas y automatización para convertir necesidades institucionales y de negocio en soluciones digitales.</p><p>He participado en proyectos para instituciones públicas, cooperación internacional y sector privado, conectando visión estratégica, creatividad y ejecución técnica.</p><div class="profile-actions"><a class="button primary" href="assets/docs/kevin-rivera-cv-octubre-2026.pdf" download="CV-Kevin-Rivera-Octubre-2026.pdf">DESCARGAR CV</a><a class="text-link" href="#trayectoria">CONOCER MI TRAYECTORIA</a></div></div></section>
     <section class="section capabilities" id="capacidades" aria-labelledby="capabilities-title"><span class="ghost-word ghost-right" aria-hidden="true">CAPACIDADES</span><div class="section-heading"><div class="section-intro"><p class="eyebrow"><span>02</span> / DISCIPLINAS & HERRAMIENTAS</p><h2 id="capabilities-title">De la visión<br>a la <em>ejecución.</em></h2></div><p class="section-description">Capacidades que se conectan según las necesidades de cada proyecto.</p></div>
       <div class="capability-grid">
-        <article><span class="micro">01 / PRODUCTO DIGITAL</span><h3>Desarrollo & UX/UI</h3><p>Plataformas web, aplicaciones móviles, flujos de usuario, navegación y arquitectura de información.</p></article>
-        <article><span class="micro">02 / TRANSFORMACIÓN</span><h3>Planificación estratégica</h3><p>Análisis de necesidades, estructuración de proyectos, mejora de procesos y acompañamiento en adopción tecnológica.</p></article>
-        <article><span class="micro">03 / AUTOMATIZACIÓN</span><h3>Integraciones & IA</h3><p>Automatización de flujos, chatbots y conexión entre aplicaciones y servicios digitales.</p><ul class="tool-list"><li>n8n</li><li>APIs REST</li></ul></article>
-        <article><span class="micro">04 / PLATAFORMAS</span><h3>CMS, LMS & infraestructura</h3><p>Administración de contenidos, usuarios, hosting, dominios, DNS y certificados SSL.</p><ul class="tool-list"><li>WordPress</li><li>Moodle</li><li>cPanel</li></ul></article>
-        <article><span class="micro">05 / APRENDIZAJE</span><h3>Diseño instruccional & OVAs</h3><p>Virtualización de contenidos y estructuración pedagógica de experiencias interactivas.</p><ul class="tool-list"><li>Storyline 360</li><li>Rise</li><li>Moodle</li></ul></article>
-        <article><span class="micro">06 / COMUNICACIÓN VISUAL</span><h3>Diseño, multimedia & animación</h3><p>Recursos gráficos, audiovisuales e interactivos para formación, comunicación y plataformas digitales.</p></article>
+        <article>
+          <span class="micro">01 / DESARROLLO WEB & MÓVIL</span>
+          <h3>Sistemas web, apps & UX/UI</h3>
+          <p>Diseño y desarrollo de sistemas administrativos, dashboards y aplicaciones móviles, desde los flujos y las interfaces hasta la integración de datos y servicios.</p>
+          <ul class="tool-list">
+            <li>Figma</li>
+            <li>React / TypeScript</li>
+            <li>Flutter / Dart</li>
+            <li>HTML / CSS / JavaScript</li>
+            <li>GitHub</li>
+          </ul>
+        </article>
+        <article>
+          <span class="micro">02 / ESTRATEGIA & GESTIÓN</span>
+          <h3>Planificación & Procesos</h3>
+          <p>Análisis de necesidades, organización de proyectos tecnológicos y mejora de procesos. Elaboración de documentación, presentaciones y herramientas de seguimiento.</p>
+          <ul class="tool-list">
+            <li>Microsoft 365: Word, Excel y PowerPoint</li>
+            <li>Gestión de Proyectos</li>
+          </ul>
+        </article>
+        <article>
+          <span class="micro">03 / AUTOMATIZACIÓN & IA</span>
+          <h3>Automatización & uso avanzado de IA</h3>
+          <p>Uso avanzado de inteligencia artificial aplicado al desarrollo, diseño y creación de contenidos. Automatización de flujos, integración de servicios y creación de chatbots.</p>
+          <ul class="tool-list">
+            <li>n8n</li>
+            <li>APIs REST & Webhooks</li>
+            <li>IA generativa</li>
+            <li>Chatbots</li>
+          </ul>
+        </article>
+        <article>
+          <span class="micro">04 / PLATAFORMAS & INFRAESTRUCTURA</span>
+          <h3>Gestión de plataformas & datos</h3>
+          <p>Administración de plataformas digitales y bases de datos. Configuración de hosting, dominios, DNS y certificados SSL para sitios web y aplicaciones.</p>
+          <ul class="tool-list">
+            <li>Supabase & SQL</li>
+            <li>Dominios / DNS / SSL</li>
+            <li>WordPress</li>
+            <li>cPanel & Hosting</li>
+          </ul>
+        </article>
+        <article>
+          <span class="micro">05 / APRENDIZAJE DIGITAL</span>
+          <h3>Diseño instruccional & OVAs</h3>
+          <p>Virtualización pedagógica de contenidos institucionales y corporativos, creación de Objetos Virtuales de Aprendizaje y configuración de entornos LMS.</p>
+          <ul class="tool-list">
+            <li>Storyline 360</li>
+            <li>Rise 360</li>
+            <li>Moodle LMS</li>
+          </ul>
+        </article>
+        <article>
+          <span class="micro">06 / UNIVERSO VISUAL & 3D</span>
+          <h3>Modelado 3D, Animación & Multimedia</h3>
+          <p>Modelado y esculpido 3D para web y videojuegos, animación digital 2D vectorial, diseño gráfico de marca y piezas editoriales, y edición de video digital.</p>
+          <ul class="tool-list">
+            <li>Blender (3D)</li>
+            <li>ZBrush (Esculpido)</li>
+            <li>Moho (Animación 2D)</li>
+            <li>Adobe Illustrator</li>
+            <li>Canva</li>
+            <li>CapCut (Video)</li>
+          </ul>
+        </article>
       </div>
     </section>
     <section class="section projects" id="proyectos" aria-labelledby="projects-title">
@@ -44,10 +114,10 @@
       <div class="orbital-tabs-container">
         <div class="filters orbital-tabs" role="group" aria-label="Filtrar proyectos">
           <button class="active orbital-tab" data-filter="all" aria-pressed="true">
-            <span class="tab-star">✦</span> Todos <span class="tab-counter" data-count="all">7</span>
+            <span class="tab-star">✦</span> Todos <span class="tab-counter" data-count="all">9</span>
           </button>
           <button class="orbital-tab" data-filter="systems" aria-pressed="false">
-            <span class="tab-idx">01</span> Sistemas y apps <span class="tab-counter" data-count="systems">2</span>
+            <span class="tab-idx">01</span> Sistemas y apps <span class="tab-counter" data-count="systems">4</span>
           </button>
           <button class="orbital-tab" data-filter="learning" aria-pressed="false">
             <span class="tab-idx">02</span> OVAs y aprendizaje interactivo <span class="tab-counter" data-count="learning">5</span>
@@ -58,28 +128,19 @@
       <div class="project-grid" id="project-grid"></div>
       <noscript><p>Activa JavaScript para explorar las fichas. Puedes <a href="projects/academia-policia/index.html">ver el caso de la Academia de la Policía</a>.</p></noscript>
       <div class="section-footnote"><span>CONCEPTOS & EXPERIENCIAS EN EVOLUCIÓN</span><span>UN UNIVERSO EN CONSTRUCCIÓN</span></div>
-    </section>
-    <section class="section approach" id="enfoque" aria-labelledby="approach-title">
-      <span class="ghost-word ghost-right" aria-hidden="true">CONECTA</span><div class="section-heading centered"><p class="eyebrow"><span>04</span> / MI ENFOQUE</p><h2 id="approach-title">Todo empieza con<br>una <em>conexión.</em></h2><span class="accent-line"></span></div>
-      <div class="approach-timeline">
-        <article><span class="timeline-number">01<span>.</span></span><div><p class="micro">CONECTAR PROCESOS & TECNOLOGÍA</p><h3>Sistemas y apps</h3><p>Plataformas web, aplicaciones móviles y ecosistemas integrados que conectan procesos e información.</p><a class="text-link category-link" href="#proyectos" data-category="systems">EXPLORAR SISTEMAS Y APPS</a></div></article>
-        <article><span class="timeline-number">02<span>.</span></span><div><p class="micro">ACTIVAR EL CONOCIMIENTO</p><h3>OVAs y aprendizaje interactivo</h3><p>Objetos Virtuales de Aprendizaje y recursos interactivos estructurados para comprender explorando.</p><a class="text-link category-link" href="#proyectos" data-category="learning">EXPLORAR OVAs</a></div></article>
-        <article><span class="timeline-number">03<span>.</span></span><div><p class="micro">DAR FORMA & IDENTIDAD</p><h3>Diseño digital</h3><p>Identidad visual, sistemas de diseño e interfaces centradas en la claridad y la experiencia de usuario.</p><a class="text-link" href="#capacidades">VER CAPACIDADES DE DISEÑO</a></div></article>
-      </div>
-    </section>
     <section class="section feature" id="fitbodygym" aria-labelledby="feature-title"><span class="ghost-word" aria-hidden="true">ECOSISTEMA</span><div class="feature-frame">
-      <div class="feature-copy"><p class="eyebrow"><span>05</span> / CASO DESTACADO</p><h2 id="feature-title">FitBody<span>Gym</span></h2><p class="feature-subtitle">Un ecosistema.<br><em>Múltiples conexiones.</em></p><p>Diseño y desarrollo de un sistema administrativo, una app móvil para usuarios y un dashboard para propietarios. Gestión de membresías, entrenamiento, analítica e integración biométrica para el control de acceso.</p><ul class="tags"><li>Gestión</li><li>Entrenamiento</li><li>Analítica</li></ul><a class="button primary" href="projects/fitbodygym/index.html">EXPLORAR EL PROYECTO Y SUS DEMOS</a><small>Imagen conceptual. Tres demos originales con datos ficticios y acceso sin credenciales.</small></div>
-      <div class="feature-preview"><div class="dashboard" aria-label="Vista conceptual de FitBodyGym con datos ficticios"><div class="dash-top"><strong>FitBody<span>Gym</span></strong><span>CONCEPTO / DEMO</span></div><div class="dash-layout"><div class="dash-sidebar" aria-hidden="true"><span>◈</span><span>▦</span><span>◇</span><span>◎</span></div><div class="dash-main"><div class="dash-title"><div><small>TU ESPACIO DE GESTIÓN</small><h3>Todo está conectado.</h3></div><span>KR</span></div><div class="metrics"><div><small>Miembros ficticios</small><strong>128</strong></div><div><small>Rutinas de muestra</small><strong>24</strong></div></div><div class="chart"><div><span>Actividad de ejemplo</span><small>SEMANA</small></div><div class="bars" aria-hidden="true"><i style="--height:35%"></i><i style="--height:58%"></i><i style="--height:46%"></i><i style="--height:75%"></i><i style="--height:62%"></i><i style="--height:88%"></i><i style="--height:68%"></i></div><div class="days"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div></div><div class="dash-note">◈ &nbsp; Gestión + entrenamiento + información</div></div></div></div><p class="preview-caption"><span>FIG. 01 — INTERFAZ CONCEPTUAL</span><span>FITBODYGYM</span></p></div>
+      <div class="feature-copy"><p class="eyebrow"><span>04</span> / CASO DESTACADO</p><h2 id="feature-title">FitBody<span>Gym</span></h2><p class="feature-subtitle">Un ecosistema.<br><em>Múltiples conexiones.</em></p><p>Diseño y desarrollo de un sistema administrativo, una app móvil para usuarios y un dashboard para propietarios. Gestión de membresías, entrenamiento, analítica e integración biométrica para el control de acceso.</p><ul class="tags"><li>Gestión</li><li>Entrenamiento</li><li>Analítica</li></ul><a class="button primary" href="projects/fitbodygym/index.html">EXPLORAR EL PROYECTO Y SUS DEMOS</a><small>Captura del sistema administrativo. Tres demos originales con datos ficticios y acceso sin credenciales.</small></div>
+      <div class="feature-preview"><a class="feature-system-shot" href="demos/apps/fitbodygym/admin/index.html" aria-label="Explorar la demo del sistema administrativo de FitBodyGym"><img src="assets/media/fitbodygym/admin-screen.webp" alt="Captura real del sistema administrativo de FitBodyGym: panel de control, clientes, membresías, pagos y accesos" width="2880" height="1800" loading="lazy" decoding="async"></a><p class="preview-caption"><span>FIG. 01 — SISTEMA ADMINISTRATIVO</span><span>FITBODYGYM</span></p></div>
     </div></section>
 
     <section class="section career" id="trayectoria" aria-labelledby="career-title">
       <span class="ghost-word" aria-hidden="true">TRAYECTORIA</span>
       <div class="career-frame">
-      <div class="section-heading"><div class="section-intro"><p class="eyebrow"><span>06</span> / EXPERIENCIA & FORMACIÓN</p><h2 id="career-title">La experiencia detrás<br>de cada <em>conexión.</em></h2></div><a class="text-link" href="assets/docs/kevin-rivera-cv-octubre-2026.pdf" download="CV-Kevin-Rivera-Octubre-2026.pdf">DESCARGAR CV COMPLETO</a></div>
+      <div class="section-heading"><div class="section-intro"><p class="eyebrow"><span>05</span> / EXPERIENCIA & FORMACIÓN</p><h2 id="career-title">La experiencia detrás<br>de cada <em>conexión.</em></h2></div><a class="text-link" href="assets/docs/kevin-rivera-cv-octubre-2026.pdf" download="CV-Kevin-Rivera-Octubre-2026.pdf">DESCARGAR CV COMPLETO</a></div>
       <div class="career-grid">
         <div class="experience-list"><h3 class="career-label">EXPERIENCIA LABORAL</h3>
           <article class="career-entry"><p class="eyebrow">GRUPO SABANTES · PROYECTOS INSTITUCIONALES</p><h4>Administrador de Plataformas Digitales y Soporte de Proyectos</h4><p>Desarrollo de sistemas web y aplicaciones móviles; diseño UX/UI; integración de APIs, chatbots y servicios; administración de CMS y LMS. También he planificado e implementado soluciones, gestionado infraestructura web y acompañado a usuarios en su adopción.</p></article>
-          <article class="career-entry"><p class="eyebrow">GRUPO SABANTES · FORMACIÓN</p><h4>Asistente de Formación y Soporte Técnico</h4><p>Soporte técnico y operativo en formación presencial y virtual, y apoyo en talleres institucionales vinculados a INL / Policía Nacional Civil, UTE e ISDEMU.</p></article>
+          <article class="career-entry"><p class="eyebrow">GRUPO SABANTES · FORMACIÓN</p><h4>Formación y Soporte Técnico</h4><p>Soporte técnico y operativo en formación presencial y virtual, y apoyo en talleres institucionales vinculados a INL / Policía Nacional Civil, UTE e ISDEMU.</p></article>
           <article class="career-entry"><p class="eyebrow">CORTE SUPREMA DE JUSTICIA / PROCURADURÍA GENERAL DE LA REPÚBLICA</p><h4>Técnico en implementación de herramientas tecnológicas</h4><p>Implementación de soluciones digitales y herramientas de IA para las consultorías «Manual de Consulta para el Juzgamiento» (CSJ) y «Protocolo para la Prevención y Atención de la Violencia y Discriminación contra las Mujeres» (PGR).</p></article>
           <article class="career-entry"><p class="eyebrow">IFES / TSE EL SALVADOR</p><h4>Digitador y Asistente Técnico</h4><p>Soporte técnico, digitación y apoyo operativo durante el Taller de Análisis Post Electoral «Lecciones Aprendidas».</p></article>
         </div>
@@ -103,7 +164,7 @@
       </div>
       </div>
     </section>
-    <section class="section contact" id="contacto" aria-labelledby="contact-title"><span class="contact-star" aria-hidden="true">✦</span><p class="eyebrow"><span>07</span> / LA PRÓXIMA CONEXIÓN</p><h2 id="contact-title">El próximo universo<br>empieza con una <em>idea.</em></h2><p>Las buenas ideas empiezan con una conversación.</p><div class="contact-links"><a class="contact-email" href="mailto:ingfernandorivera99@gmail.com">ingfernandorivera99@gmail.com</a><a class="text-link" href="tel:+50377362990">+503 7736-2990</a></div></section>
+    <section class="section contact" id="contacto" aria-labelledby="contact-title"><span class="contact-star" aria-hidden="true">✦</span><p class="eyebrow"><span>06</span> / LA PRÓXIMA CONEXIÓN</p><h2 id="contact-title">El próximo universo<br>empieza con una <em>idea.</em></h2><p>Las buenas ideas empiezan con una conversación.</p><div class="contact-links"><a class="contact-email" href="mailto:ingfernandorivera99@gmail.com">ingfernandorivera99@gmail.com</a><a class="text-link" href="tel:+50377362990">+503 7736-2990</a></div></section>
   </main>
   <footer><a class="brand" href="#inicio" aria-label="Kevin Rivera, inicio">K<span>R</span><i aria-hidden="true">✦</i></a><p>Kevin Rivera · <span id="year">2026</span></p><a href="#inicio">VOLVER AL INICIO</a></footer>
   <dialog id="project-dialog" aria-labelledby="dialog-title"><button class="dialog-close" aria-label="Cerrar ficha">×</button><p class="eyebrow" id="dialog-category"></p><h2 id="dialog-title"></h2><p id="dialog-description"></p><div id="dialog-details"></div><div id="dialog-actions"></div></dialog>

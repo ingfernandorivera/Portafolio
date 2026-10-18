@@ -2,18 +2,21 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; media-src 'self' blob:; worker-src 'self' blob:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ISDEMU Formación Digital · Fernando Rivera</title>
   <meta name="description" content="Ecosistema formativo para ISDEMU: Alfabetización en Derechos, Liderazgo y Corresponsabilidad, y Cuidados PAM. OVAs interactivas y manual diseñado.">
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../../assets/theme.css">
+  <link rel="stylesheet" href="../../assets/fonts/fonts.css"><link rel="stylesheet" href="../../assets/styles.css"><link rel="stylesheet" href="../../assets/motion.css"><link rel="stylesheet" href="../../assets/theme.css">
   <link rel="stylesheet" href="../../assets/nebula.css">
   <link rel="stylesheet" href="../../assets/cases.css">
   <link rel="stylesheet" href="manual-viewer.css">
   <script type="module" src="manual-viewer.js"></script>
   <script src="../../assets/nebula.js" defer></script>
   <script src="../../assets/lightbox.js" defer></script>
-</head>
+<script src="../../assets/motion.js" defer></script></head>
 <body>
   <!-- Fondo cósmico animado -->
   <div class="cosmic-background" aria-hidden="true">
@@ -74,7 +77,7 @@
             </select>
           </div>
           <div class="pdf-stage" tabindex="0" role="region" aria-label="Página del manual. Desplázate para leer el documento." aria-busy="true">
-            <img src="manual-pages/page-01.jpg" alt="Portada del manual de cuidados PAM" width="983" height="1390">
+            <img src="manual-pages/page-01.jpg" alt="Portada del manual de cuidados PAM" width="983" height="1390" decoding="async">
           </div>
           <p class="pdf-status" data-status role="status">Página 1 de 51</p>
         </div>
@@ -128,10 +131,10 @@
         </div>
 
         <div class="collage-board">
-          <!-- 
+          <!--
             [FOTO 1/5] SLIDE DE PORTADA / BANNER PRINCIPAL (16:9 Panorámico)
             • Qué muestra: Portada morada con mujeres ilustradas y título "Alfabetización en Derechos"
-            • Archivo: public/assets/media/isdemu/alfabetizacion/slide-principal.png
+            • Archivo: public/assets/media/isdemu/alfabetizacion/slide-principal.webp
             • EDITA EL TAMAÑO AQUÍ:
               - height: auto        -> Mantiene la proporción horizontal
               - max-height: 480px   -> Altura máxima permitida
@@ -139,10 +142,10 @@
           -->
           <figure class="collage-card" style="width: 100%;">
             <div class="img-box">
-              <img src="../../assets/media/isdemu/alfabetizacion/slide-principal.png" 
+              <img src="../../assets/media/isdemu/alfabetizacion/slide-principal.webp"
                    style="width: 100%; height: auto; display: block;"
-                   alt="Presentación principal del curso Alfabetización en Derechos" 
-                   loading="lazy">
+                   alt="Presentación principal del curso Alfabetización en Derechos"
+                   loading="lazy" width="1152" height="614" decoding="async">
             </div>
             <figcaption>01 / IDENTIDAD FORMATIVA & SLIDE PRINCIPAL · ALFABETIZACIÓN EN DERECHOS</figcaption>
           </figure>
@@ -154,10 +157,10 @@
               <!-- [FOTO 2/5] ACTIVIDAD LÚDICA INTERACTIVA -->
               <figure class="collage-card" style="width: 100%;">
                 <div class="img-box">
-                  <img src="../../assets/media/isdemu/alfabetizacion/actividad-interactiva.png" 
+                  <img src="../../assets/media/isdemu/alfabetizacion/actividad-interactiva.webp"
                        style="width: 100%; height: auto; display: block;"
-                       alt="Actividad lúdica interactiva" 
-                       loading="lazy">
+                       alt="Actividad lúdica interactiva"
+                       loading="lazy" width="628" height="418" decoding="async">
                 </div>
                 <figcaption>02 / ACTIVIDAD LÚDICA INTERACTIVA Y RETROALIMENTACIÓN</figcaption>
               </figure>
@@ -165,10 +168,10 @@
               <!-- [FOTO 3/5] MÓDULO OVA INTERACTIVO -->
               <figure class="collage-card" style="width: 100%;">
                 <div class="img-box">
-                  <img src="../../assets/media/isdemu/alfabetizacion/recurso-ova.png" 
+                  <img src="../../assets/media/isdemu/alfabetizacion/recurso-ova.webp"
                        style="width: 100%; height: auto; display: block;"
-                       alt="Módulo interactivo OVA" 
-                       loading="lazy">
+                       alt="Módulo interactivo OVA"
+                       loading="lazy" width="972" height="474" decoding="async">
                 </div>
                 <figcaption>03 / RECURSO MULTIMEDIA INTERACTIVO PARA OVA</figcaption>
               </figure>
@@ -179,10 +182,10 @@
               <!-- [FOTO 4/5] ESTRUCTURA Y GUÍA CONCEPTUAL -->
               <figure class="collage-card" style="width: 100%;">
                 <div class="img-box">
-                  <img src="../../assets/media/isdemu/alfabetizacion/modulo-info.png" 
+                  <img src="../../assets/media/isdemu/alfabetizacion/modulo-info.webp"
                        style="width: 100%; height: auto; display: block;"
-                       alt="Recurso didáctico de apoyo" 
-                       loading="lazy">
+                       alt="Recurso didáctico de apoyo"
+                       loading="lazy" width="692" height="428" decoding="async">
                 </div>
                 <figcaption>04 / ESTRUCTURA DE CONTENIDOS Y GUÍA FORMATIVA</figcaption>
               </figure>
@@ -190,10 +193,10 @@
               <!-- [FOTO 5/5] TARJETA DIDÁCTICA Y DEBATE -->
               <figure class="collage-card" style="width: 100%;">
                 <div class="img-box">
-                  <img src="../../assets/media/isdemu/alfabetizacion/tarjeta-2.png" 
+                  <img src="../../assets/media/isdemu/alfabetizacion/tarjeta-2.webp"
                        style="width: 100%; height: auto; display: block;"
-                       alt="Material educativo complementario" 
-                       loading="lazy">
+                       alt="Material educativo complementario"
+                       loading="lazy" width="627" height="461" decoding="async">
                 </div>
                 <figcaption>05 / TARJETA DIDÁCTICA Y DEBATE CONCEPTUAL</figcaption>
               </figure>
@@ -217,23 +220,23 @@
         </div>
 
         <div class="collage-board">
-          <!-- 
+          <!--
             [FOTO 1 y 2/6] HERO BANNER AZUL CON MOCKUP MÓVIL CENTRAL
             • Banner de fondo: Ilustración de hombres tirando de una cuerda (banner-masculinidades.png)
             • Mockup móvil flotante: Celular blanco en el centro con actividad de aprendizaje (tarjeta-3.png)
             • EDITA EL MÓVIL AQUÍ: En cases.css busca .liderazgo-hero-wrap .center-mockup (ancho: 20%)
           -->
           <div class="liderazgo-hero-wrap">
-            <img src="../../assets/media/isdemu/liderazgo/banner-masculinidades.png" 
+            <img src="../../assets/media/isdemu/liderazgo/banner-masculinidades.webp"
                  style="width: 100%; height: auto; display: block;"
-                 alt="Banner oficial del programa Liderazgo y Corresponsabilidad" 
-                 class="banner-img" 
-                 loading="lazy">
+                 alt="Banner oficial del programa Liderazgo y Corresponsabilidad"
+                 class="banner-img"
+                 loading="lazy" width="1519" height="480" decoding="async">
             <div class="center-mockup">
-              <img src="../../assets/media/isdemu/liderazgo/tarjeta-3.png" 
+              <img src="../../assets/media/isdemu/liderazgo/tarjeta-3.webp"
                    style="width: 100%; height: auto; display: block;"
-                   alt="Vista previa móvil de actividad interactiva" 
-                   loading="lazy">
+                   alt="Vista previa móvil de actividad interactiva"
+                   loading="lazy" width="259" height="393" decoding="async">
             </div>
           </div>
 
@@ -242,10 +245,10 @@
             <!-- [FOTO 3/6] SLIDE MÓDULO 1: LIDERAZGO Y CORRESPONSABILIDAD -->
             <figure class="collage-card" style="width: 100%;">
               <div class="img-box">
-                <img src="../../assets/media/isdemu/liderazgo/recurso-igualdad.png" 
+                <img src="../../assets/media/isdemu/liderazgo/recurso-igualdad.webp"
                      style="width: 100%; height: auto; display: block;"
-                     alt="Recursos sobre corresponsabilidad e igualdad" 
-                     loading="lazy">
+                     alt="Recursos sobre corresponsabilidad e igualdad"
+                     loading="lazy" width="1141" height="485" decoding="async">
               </div>
               <figcaption>01 / MÓDULO 1: LIDERAZGO TRANSFORMADOR Y ÉTICO (CONTENIDOS Y CASOS)</figcaption>
             </figure>
@@ -253,10 +256,10 @@
             <!-- [FOTO 4/6] TARJETA VERTICAL: PREGUNTAS PODEROSAS (CENTRADA) -->
             <figure class="collage-card" style="max-width: 280px; width: 100%; margin: 0 auto;">
               <div class="img-box">
-                <img src="../../assets/media/isdemu/liderazgo/tarjeta-2.png" 
+                <img src="../../assets/media/isdemu/liderazgo/tarjeta-2.png"
                      style="width: 100%; height: auto; display: block;"
-                     alt="Ficha formativa con ejemplos y preguntas" 
-                     loading="lazy">
+                     alt="Ficha formativa con ejemplos y preguntas"
+                     loading="lazy" width="258" height="393" decoding="async">
               </div>
               <figcaption>02 / EJEMPLOS Y PREGUNTAS PODEROSAS · DIÁLOGO ABIERTO</figcaption>
             </figure>
@@ -267,10 +270,10 @@
             <!-- [FOTO 5/6] MOCKUP CELULAR: ESCUCHA ACTIVA Y EMPATÍA (CENTRADO) -->
             <figure class="collage-card" style="max-width: 280px; width: 100%; margin: 0 auto;">
               <div class="img-box">
-                <img src="../../assets/media/isdemu/liderazgo/tarjeta-1.png" 
+                <img src="../../assets/media/isdemu/liderazgo/tarjeta-1.png"
                      style="width: 100%; height: auto; display: block;"
-                     alt="Dinámica interactiva: escucha activa" 
-                     loading="lazy">
+                     alt="Dinámica interactiva: escucha activa"
+                     loading="lazy" width="315" height="452" decoding="async">
               </div>
               <figcaption>03 / ESCUCHA ACTIVA, EMPATÍA Y DIVERSIDAD</figcaption>
             </figure>
@@ -278,10 +281,10 @@
             <!-- [FOTO 6/6] SLIDE ANCHO: LIDERAZGO, DECISIONES Y GESTIÓN -->
             <figure class="collage-card" style="width: 100%;">
               <div class="img-box">
-                <img src="../../assets/media/isdemu/liderazgo/slide-principal.png" 
+                <img src="../../assets/media/isdemu/liderazgo/slide-principal.webp"
                      style="width: 100%; height: auto; display: block;"
-                     alt="Liderazgo: decisiones y gestión" 
-                     loading="lazy">
+                     alt="Liderazgo: decisiones y gestión"
+                     loading="lazy" width="1152" height="648" decoding="async">
               </div>
               <figcaption>04 / SESIÓN FORMATIVA · LIDERAZGO: DECISIONES Y GESTIÓN</figcaption>
             </figure>
@@ -306,10 +309,10 @@
           <!-- [FOTO 1/5] TABLET MOCKUP EN CABECERA (COMO EN POWERPOINT) -->
           <figure class="collage-card" style="max-width: 260px; width: 100%; margin: 0 auto;">
             <div class="img-box">
-              <img src="../../assets/media/isdemu/cuidados/tarjeta-info.png" 
+              <img src="../../assets/media/isdemu/cuidados/tarjeta-info.webp"
                    style="width: 100%; height: auto; display: block;"
-                   alt="Vista previa en tablet de los contenidos del curso PAM" 
-                   loading="lazy">
+                   alt="Vista previa en tablet de los contenidos del curso PAM"
+                   loading="lazy" width="335" height="452" decoding="async">
             </div>
             <figcaption>01 / RECURSOS EN TABLET</figcaption>
           </figure>
@@ -319,10 +322,10 @@
           <!-- [FOTO 2/5] GRAN BANNER OFICIAL DE CUIDADOS PAM (ANCHO COMPLETO) -->
           <figure class="collage-card" style="width: 100%;">
             <div class="img-box">
-              <img src="../../assets/media/isdemu/cuidados/banner-cuidados.png" 
+              <img src="../../assets/media/isdemu/cuidados/banner-cuidados.webp"
                    style="width: 100%; height: auto; display: block;"
-                   alt="Identidad y portada del curso de cuidados PAM" 
-                   loading="lazy">
+                   alt="Identidad y portada del curso de cuidados PAM"
+                   loading="lazy" width="1519" height="531" decoding="async">
             </div>
             <figcaption>02 / MÓDULO 3: APOYOS Y CUIDADOS BÁSICOS A PAM EN LA VIDA DIARIA (I)</figcaption>
           </figure>
@@ -332,10 +335,10 @@
             <!-- [FOTO 3/5] TELÉFONO VERTICAL CENTRADO -->
             <figure class="collage-card" style="max-width: 320px; width: 100%; margin: 0 auto;">
               <div class="img-box">
-                <img src="../../assets/media/isdemu/cuidados/portada-manual.png" 
+                <img src="../../assets/media/isdemu/cuidados/portada-manual.webp"
                      style="width: 100%; height: auto; display: block;"
-                     alt="Estilos de comunicación en la atención a PAM" 
-                     loading="lazy">
+                     alt="Estilos de comunicación en la atención a PAM"
+                     loading="lazy" width="330" height="608" decoding="async">
               </div>
               <figcaption>03 / COMUNICACIÓN Y HABILIDADES DE ATENCIÓN EN LA VIDA DIARIA</figcaption>
             </figure>
@@ -345,10 +348,10 @@
               <!-- [FOTO 4/5] SLIDE: RESPONSABILIDADES ESTADO Y FAMILIA -->
               <figure class="collage-card" style="width: 100%;">
                 <div class="img-box">
-                  <img src="../../assets/media/isdemu/cuidados/slide-principal.png" 
+                  <img src="../../assets/media/isdemu/cuidados/slide-principal.webp"
                        style="width: 100%; height: auto; display: block;"
-                       alt="Responsabilidades del Estado y de la Familia" 
-                       loading="lazy">
+                       alt="Responsabilidades del Estado y de la Familia"
+                       loading="lazy" width="1152" height="614" decoding="async">
                 </div>
                 <figcaption>04 / RESPONSABILIDADES DEL ESTADO Y DE LA FAMILIA EN EL CUIDADO</figcaption>
               </figure>
@@ -356,10 +359,10 @@
               <!-- [FOTO 5/5] SLIDE: POLÍTICA NACIONAL DE CORRESPONSABILIDAD -->
               <figure class="collage-card" style="width: 100%;">
                 <div class="img-box">
-                  <img src="../../assets/media/isdemu/cuidados/recurso-pam.png" 
+                  <img src="../../assets/media/isdemu/cuidados/recurso-pam.webp"
                        style="width: 100%; height: auto; display: block;"
-                       alt="Política Nacional de Corresponsabilidad de los Cuidados" 
-                       loading="lazy">
+                       alt="Política Nacional de Corresponsabilidad de los Cuidados"
+                       loading="lazy" width="1152" height="366" decoding="async">
                 </div>
                 <figcaption>05 / POLÍTICA NACIONAL DE CORRESPONSABILIDAD DE LOS CUIDADOS (2021-2030)</figcaption>
               </figure>
