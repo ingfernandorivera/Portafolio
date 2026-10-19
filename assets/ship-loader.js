@@ -1,20 +1,40 @@
-// The portfolio paints first. WebGL and the model are an optional enhancement.
+// Immediate 3D spaceship loader: keeps hero title hidden until the ship wake reveals each character.
 (() => {
   const root = document.documentElement;
   const button = document.querySelector('.ship-replay');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const connection = navigator.connection;
-  const constrained = connection?.saveData || /(^|-)2g$/.test(connection?.effectiveType || '');
   let flight;
   let loading;
 
+  const revealFallback = () => {
+    root.classList.remove('ship-intro-capable', 'ship-intro-running');
+    root.classList.add('ship-intro-complete');
+  };
+
+  if (reduced.matches) {
+    revealFallback();
+  } else {
+    root.classList.add('ship-intro-capable', 'ship-intro-ready');
+  }
+
+  // Safety net if network or WebGL fails before module initialization completes
+  const safetyTimer = setTimeout(() => {
+    if (!flight && !root.classList.contains('ship-intro-running')) {
+      revealFallback();
+    }
+  }, 12000);
+
   async function loadFlight(manual = false) {
-    if (reduced.matches || document.hidden) return;
+    if (reduced.matches) {
+      revealFallback();
+      return;
+    }
     if (button) button.disabled = true;
     try {
       if (!loading) {
-        loading = import('./ship-intro.js?v=2').then(async module => {
+        loading = import('./ship-intro.js?v=5').then(async module => {
           const initialized = await module.init({ autoplay: !manual });
+          clearTimeout(safetyTimer);
           if (!initialized) {
             loading = null;
             return null;
@@ -26,33 +46,33 @@
       const module = await loading;
       if (manual) module?.start(true);
     } catch (error) {
+      clearTimeout(safetyTimer);
       loading = null;
-      root.classList.remove('ship-intro-capable', 'ship-intro-running');
-      root.classList.add('ship-intro-complete');
-      console.warn('No se pudo cargar la animación opcional.', error);
+      revealFallback();
+      console.warn('No se pudo cargar la animación 3D.', error);
     } finally {
       if (button) button.disabled = root.classList.contains('ship-intro-running');
     }
   }
 
-  if (!reduced.matches) root.classList.add('ship-intro-ready');
   button?.addEventListener('click', () => loadFlight(true));
-  const schedule = () => {
-    if (reduced.matches || constrained || document.hidden || flight) return;
-    const run = () => loadFlight();
-    // Give the page two paint frames, then start preparing the first flight.
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      if ('requestIdleCallback' in window) requestIdleCallback(run, { timeout: 800 });
-      else setTimeout(run, 0);
-    }));
-  };
-  if (document.readyState !== 'loading') schedule();
-  else document.addEventListener('DOMContentLoaded', schedule, { once: true });
+
+  if (!reduced.matches) {
+    loadFlight(false);
+  }
+
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) schedule();
+    if (!document.hidden && !flight && !reduced.matches) {
+      loadFlight(false);
+    }
   });
+
   reduced.addEventListener('change', () => {
-    root.classList.toggle('ship-intro-ready', !reduced.matches);
-    if (!reduced.matches) schedule();
+    if (reduced.matches) {
+      revealFallback();
+    } else {
+      root.classList.add('ship-intro-ready');
+      loadFlight(false);
+    }
   });
 })();

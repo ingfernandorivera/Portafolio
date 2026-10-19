@@ -26,11 +26,9 @@
   gap: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
-  background: rgba(14, 11, 26, 0.85) !important;
+  background: rgba(14, 11, 26, 0.94) !important;
   border: 1px solid rgba(193, 160, 255, 0.25) !important;
   border-radius: 0 !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
   box-shadow: 0 10px 30px rgba(5, 3, 14, 0.6) !important;
   width: fit-content !important;
   max-width: 100% !important;
@@ -145,12 +143,10 @@
 /* --- Tarjeta de Proyecto Arquitectónica (Bordes Rectos) --- */
 .project-card {
   position: relative !important;
-  background: rgba(16, 13, 30, 0.8) !important;
+  background: rgba(16, 13, 30, 0.92) !important;
   border: 1px solid rgba(193, 160, 255, 0.22) !important;
   border-radius: 0 !important;
   overflow: hidden !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
   display: flex !important;
   flex-direction: column !important;
   transition: transform 0.35s ease, border-color 0.3s ease, box-shadow 0.35s ease !important;
@@ -251,11 +247,10 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   color: #ffffff;
-  background: rgba(14, 11, 27, 0.9);
+  background: rgba(14, 11, 27, 0.94);
   border: 1px solid rgba(216, 180, 254, 0.35);
   border-radius: 0 !important;
   padding: 5px 10px;
-  backdrop-filter: blur(8px);
 }
 
 .badge-status {
@@ -267,11 +262,10 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   color: #e5d4ff;
-  background: rgba(180, 76, 203, 0.35);
+  background: rgba(88, 36, 112, 0.88);
   border: 1px solid rgba(216, 180, 254, 0.5);
   border-radius: 0 !important;
   padding: 5px 10px;
-  backdrop-filter: blur(8px);
   text-transform: uppercase;
 }
 

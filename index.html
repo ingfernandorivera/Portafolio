@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" class="ship-intro-capable">
 <head>
   <meta charset="utf-8">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -9,11 +9,16 @@
   <meta name="theme-color" content="#18152e"><title>Kevin Rivera — Diseño & universos digitales</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <script type="importmap">{"imports":{"three":"./assets/vendor/three/build/three.module.min.js"}}</script>
-  <link rel="stylesheet" href="assets/fonts/fonts.css"><link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/motion.css"><link rel="stylesheet" href="assets/theme.css"><link rel="stylesheet" href="assets/career.css"><link rel="stylesheet" href="assets/nebula.css"><link rel="stylesheet" href="assets/projects-orbital.css"><link rel="stylesheet" href="assets/ship-intro.css">
+  <style>html.ship-intro-capable:not(.ship-intro-complete) [data-ship-reveal]:not([data-ship-split]){opacity:0!important;visibility:hidden!important;pointer-events:none}html.ship-intro-capable:not(.ship-intro-complete) .ship-char{opacity:0}</style>
+  <link rel="stylesheet" href="assets/fonts/fonts.css"><link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/motion.css"><link rel="stylesheet" href="assets/theme.css"><link rel="stylesheet" href="assets/career.css"><link rel="stylesheet" href="assets/nebula.css"><link rel="stylesheet" href="assets/projects-orbital.css"><link rel="stylesheet" href="assets/ship-intro.css?v=5">
   <link rel="preload" as="image" href="assets/media/nebula-editorial.webp" fetchpriority="high">
+  <link rel="preload" href="assets/media/nave-v7-web.glb" as="fetch" crossorigin fetchpriority="high">
+  <link rel="modulepreload" href="assets/ship-intro.js?v=5">
+  <link rel="modulepreload" href="assets/vendor/three/build/three.module.min.js">
+  <link rel="modulepreload" href="assets/vendor/meshopt/meshopt_decoder.js">
   <link rel="preload" href="assets/fonts/cormorant-garamond-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <script src="assets/ship-loader.js?v=2" defer></script><script src="assets/projects.js" defer></script><script src="assets/app.js" defer></script><script src="assets/nebula.js" defer></script><script src="assets/motion.js" defer></script>
+  <script src="assets/ship-loader.js?v=5" defer></script><script src="assets/projects.js" defer></script><script src="assets/app.js" defer></script><script src="assets/nebula.js" defer></script><script src="assets/motion.js" defer></script>
 </head>
 <body>
   <div class="cosmic-background" aria-hidden="true"><div class="nebula-depth nebula-depth-far"><div class="nebula-cloud nebula-cloud-violet"></div></div><div class="nebula-depth nebula-depth-near"><div class="nebula-cloud nebula-cloud-blue"></div></div><div class="nebula-depth nebula-depth-wisp"><div class="nebula-cloud nebula-cloud-wisp"></div></div><div class="cosmic-stars"></div><div class="cosmic-shade"></div></div>
@@ -126,8 +131,9 @@
       </div>
       <p id="results" class="sr-only" aria-live="polite"></p>
       <div class="project-grid" id="project-grid"></div>
-      <noscript><p>Activa JavaScript para explorar las fichas. Puedes <a href="projects/academia-policia/index.html">ver el caso de la Academia de la Policía</a>.</p></noscript>
+      <noscript><style>[data-ship-reveal]{opacity:1!important}</style><p>Activa JavaScript para explorar las fichas. Puedes <a href="projects/academia-policia/index.html">ver el caso de la Academia de la Policía</a>.</p></noscript>
       <div class="section-footnote"><span>CONCEPTOS & EXPERIENCIAS EN EVOLUCIÓN</span><span>UN UNIVERSO EN CONSTRUCCIÓN</span></div>
+    </section>
     <section class="section feature" id="fitbodygym" aria-labelledby="feature-title"><span class="ghost-word" aria-hidden="true">ECOSISTEMA</span><div class="feature-frame">
       <div class="feature-copy"><p class="eyebrow"><span>04</span> / CASO DESTACADO</p><h2 id="feature-title">FitBody<span>Gym</span></h2><p class="feature-subtitle">Un ecosistema.<br><em>Múltiples conexiones.</em></p><p>Diseño y desarrollo de un sistema administrativo, una app móvil para usuarios y un dashboard para propietarios. Gestión de membresías, entrenamiento, analítica e integración biométrica para el control de acceso.</p><ul class="tags"><li>Gestión</li><li>Entrenamiento</li><li>Analítica</li></ul><a class="button primary" href="projects/fitbodygym/index.html">EXPLORAR EL PROYECTO Y SUS DEMOS</a><small>Captura del sistema administrativo. Tres demos originales con datos ficticios y acceso sin credenciales.</small></div>
       <div class="feature-preview"><a class="feature-system-shot" href="demos/apps/fitbodygym/admin/index.html" aria-label="Explorar la demo del sistema administrativo de FitBodyGym"><img src="assets/media/fitbodygym/admin-screen.webp" alt="Captura real del sistema administrativo de FitBodyGym: panel de control, clientes, membresías, pagos y accesos" width="2880" height="1800" loading="lazy" decoding="async"></a><p class="preview-caption"><span>FIG. 01 — SISTEMA ADMINISTRATIVO</span><span>FITBODYGYM</span></p></div>
