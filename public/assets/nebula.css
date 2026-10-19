@@ -43,19 +43,16 @@ body { isolation: isolate; }
 }
 .nebula-cloud-blue {
   background:
-    radial-gradient(ellipse 45% 21% at 30% 76%, #294fc152, transparent 77%),
-    radial-gradient(ellipse 18% 38% at 61% 72%, #343dc357, transparent 76%),
-    radial-gradient(ellipse 33% 13% at 63% 32%, #7252b841, transparent 78%);
-  filter: blur(44px);
+    radial-gradient(ellipse 52% 28% at 30% 76%, #294fc148, transparent 82%),
+    radial-gradient(ellipse 26% 44% at 61% 72%, #343dc34d, transparent 82%),
+    radial-gradient(ellipse 40% 20% at 63% 32%, #7252b83b, transparent 84%);
   opacity: .55;
   animation: blue-flow 42s ease-in-out infinite alternate;
 }
 .nebula-cloud-wisp {
   background:
-    conic-gradient(from 68deg at 65% 58%, transparent 0deg, #b778c32a 15deg, transparent 44deg, #6047b83d 68deg, transparent 105deg),
-    radial-gradient(ellipse 43% 5% at 63% 58%, #9b65d52e, transparent 85%),
-    radial-gradient(ellipse 28% 8% at 72% 47%, #c263be23, transparent 80%);
-  filter: blur(24px);
+    radial-gradient(ellipse 48% 12% at 63% 58%, #9b65d529, transparent 88%),
+    radial-gradient(ellipse 34% 14% at 72% 47%, #c263be21, transparent 86%);
   opacity: .4;
   transform: rotate(-22deg) skewX(-14deg);
   animation: wisp-flow 29s ease-in-out infinite alternate;
@@ -92,12 +89,11 @@ body { isolation: isolate; }
   from { transform: rotate(-22deg) skewX(-14deg) translate3d(0, 0, 0); }
   to { transform: rotate(-14deg) skewX(-8deg) translate3d(-4%, 3%, 0); }
 }
-.cosmic-background.is-paused .nebula-cloud { animation-play-state: paused; }
+.cosmic-background.is-paused .nebula-cloud,
+html.ship-intro-running .nebula-cloud { animation-play-state: paused; }
 @media (max-width: 700px) {
   .nebula-depth { inset: -18% -60%; }
   .nebula-cloud-violet { background-position: 65% center; opacity: .58; }
-  .nebula-cloud-blue { filter: blur(32px); }
-  .nebula-cloud-wisp { filter: blur(20px); }
   .cosmic-shade { background: #18152e50; }
 }
 @media (prefers-reduced-motion: reduce) {

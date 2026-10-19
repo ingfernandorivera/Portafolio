@@ -46,8 +46,16 @@
   backface-visibility: hidden;
 }
 
+.ship-intro-capable:not(.ship-intro-complete) .ship-char {
+  opacity: 0;
+}
+
 .ship-intro-running .ship-char {
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
+}
+
+.ship-char-glow {
+  text-shadow: 0 0 14px rgba(110, 234, 255, 0.78), 0 0 26px rgba(168, 130, 255, 0.48);
 }
 
 .ship-intro-complete [data-ship-reveal],
